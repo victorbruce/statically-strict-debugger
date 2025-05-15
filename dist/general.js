@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class General {
     isLightOn;
     lightIntensity;
@@ -164,4 +166,4 @@ class General {
         return newWord;
     }
 }
-export default General;
+exports.default = General;

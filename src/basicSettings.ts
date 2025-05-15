@@ -50,7 +50,7 @@ class Light extends General {
       throw new Error("Could not determine room from lightButtonElement");
     }
 
-    const componentData = this.getComponent(room[0]);
+    const componentData = this.getComponent(room);
     const childElement =
       lightButtonElement.firstElementChild as HTMLImageElement;
     const background = this.closestSelector(
@@ -109,7 +109,7 @@ class Light extends General {
       return;
     }
 
-    componentData.isLightOn = false;
+    componentData.isLightOn = true;
     this.sliderLight(componentData.isLightOn, lightSwitch as HTMLElement);
   }
 

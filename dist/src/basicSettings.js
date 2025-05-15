@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const general_1 = __importDefault(require("./general"));
-class Light extends general_1.default {
+import General from "./general.js";
+class Light extends General {
     constructor() {
         super();
     }
@@ -93,4 +88,4 @@ class Light extends general_1.default {
         }
     }
 }
-exports.default = Light;
+export default Light;

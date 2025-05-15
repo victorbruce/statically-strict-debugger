@@ -1,4 +1,3 @@
-"use script";
 // elements declarations
 const homepageButton = document.querySelector(".entry_point");
 const homepage = document.querySelector("main");
@@ -29,7 +28,8 @@ mainRoomsContainer.addEventListener("click", (e) => {
     const selectedElement = e.target;
     // when click occurs on light switch
     if (selectedElement.closest(".light-switch")) {
-        const lightSwitch = selectedElement.closest(".basic_settings_buttons").firstElementChild;
+        const container = selectedElement.closest(".basic_settings_buttons");
+        const lightSwitch = container.firstElementChild;
         lightController.toggleLightSwitch(lightSwitch);
         return;
     }
@@ -41,7 +41,7 @@ mainRoomsContainer.addEventListener("click", (e) => {
 });
 mainRoomsContainer.addEventListener("change", (e) => {
     const slider = e.target;
-    const value = slider.value;
+    const value = +slider.value;
     lightController.handleLightIntensitySlider(slider, value);
 });
 // advance settings modal
@@ -63,7 +63,7 @@ advanceFeaturesContainer.addEventListener("click", (e) => {
         advancedSettings.customizeAutomaticOffPreset(selectedElement);
     }
     // cancel light time customization
-    if (selectedElement.textContent.includes("Cancel")) {
+    if (selectedElement.textContent?.includes("Cancel")) {
         if (selectedElement.matches(".defaultOn-cancel")) {
             advancedSettings.customizationCancelled(selectedElement, ".defaultOn");
         }

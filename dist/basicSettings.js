@@ -1,4 +1,3 @@
-"use strict";
 import General from "./general.js";
 class Light extends General {
     constructor() {
@@ -33,7 +32,10 @@ class Light extends General {
     }
     lightComponentSelectors(lightButtonElement) {
         const room = this.getSelectedComponentName(lightButtonElement);
-        const componentData = this.getComponent(room[0]);
+        if (!room) {
+            throw new Error("Could not determine room from lightButtonElement");
+        }
+        const componentData = this.getComponent(room);
         const childElement = lightButtonElement.firstElementChild;
         const background = this.closestSelector(lightButtonElement, ".rooms", "img");
         return { room, componentData, childElement, background };
@@ -49,17 +51,17 @@ class Light extends General {
             component.lightIntensity = 5;
             const lightIntensity = component.lightIntensity / 10;
             this.handleLightIntensity(background, lightIntensity);
-            slider.value = component.lightIntensity;
+            slider.value = `${component.lightIntensity}`;
         }
         else {
             this.lightSwitchOff(childElement);
             this.handleLightIntensity(background, 0);
-            slider.value = 0;
+            slider.value = `${0}`;
         }
     }
     handleLightIntensitySlider(element, intensity) {
         const { componentData } = this.lightComponentSelectors(element);
-        if (typeof intensity !== "number" || typeof intensity === isNaN)
+        if (typeof intensity !== "number" || isNaN(intensity))
             return;
         componentData.lightIntensity = intensity;
         const lightSwitch = this.closestSelector(element, ".rooms", ".light-switch");
@@ -68,7 +70,7 @@ class Light extends General {
             this.sliderLight(componentData.isLightOn, lightSwitch);
             return;
         }
-        componentData.isLightOn = false;
+        componentData.isLightOn = true;
         this.sliderLight(componentData.isLightOn, lightSwitch);
     }
     sliderLight(isLightOn, lightButtonElement) {

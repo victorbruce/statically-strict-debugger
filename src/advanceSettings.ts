@@ -252,7 +252,7 @@ class AdvanceSettings extends Light {
   }
 
   capFirstLetter(word: string) {
-    const first = word.at(0);
+    const first = word[0]
 
     if (!first) return word;
 

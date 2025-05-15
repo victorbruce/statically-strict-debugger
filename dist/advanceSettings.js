@@ -132,7 +132,7 @@ class AdvanceSettings extends Light {
             return;
         const { value } = element;
         // when value is falsy
-        if (!!value)
+        if (!value)
             return;
         const component = this.getComponentData(element, ".advanced_features", ".component_name");
         if (!component)
@@ -153,7 +153,7 @@ class AdvanceSettings extends Light {
             return;
         const { value } = element;
         // when value is falsy
-        if (!!value)
+        if (!value)
             return;
         const component = this.getComponentData(element, ".advanced_features", ".component_name");
         if (!component)

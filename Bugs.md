@@ -180,3 +180,68 @@ const selectedElement = e.target as HTMLElement;
 
 // etc.
 ```
+
+## Slider Responsively Increases and Decreases room's light intensity immediately as you move it
+
+**Problem:**
+
+Slider does not increase or decrease light intensity when changed
+
+**Cause**:
+
+an undefined variable `intensity` is being set on property `lihgtIntensity`
+
+`componentData.lightIntensity = intensity;`
+
+```bash
+Uncaught TypeError: Cannot set properties of undefined (setting 'lightIntensity')
+    at Light.handleLightIntensitySlider
+```
+
+**Solution**
+
+1. componentData returns undefined here
+
+```ts
+const { componentData } = this.lightComponentSelectors(element);
+```
+
+2. ensure that the right room is returned in the `lightComponentSelectors` method
+
+```ts
+// the first character of the room(eg. for hall, h) was being passed as a string
+const componentData = this.getComponent(room[0]);
+
+// final change
+const componentData = this.getComponent(room);
+```
+
+3. finally when the intensity is greater than 0, set the isLightOn to true
+
+```ts
+// previously
+componentData.isLightOn = false;
+
+// final change
+componentData.isLightOn = true;
+```
+
+## The light switch for each room component turns on or off the light of the selected room
+
+**Problem**
+
+Clicking the light bulb icon button does not toggle light on and off.
+
+**Cause**
+
+The root cause of this problem is that, the `isLightOn` property on the `componentData` was always set to false even
+if the intensity is greater than 0
+
+**Solution**
+```ts
+// set isLightOn to true when intensity > 0
+componentData.isLightOn = true;
+
+// this ensures that the right value is passed to this.sliderLight
+this.sliderLight(componentData.isLightOn, lightSwitch as HTMLElement);
+```

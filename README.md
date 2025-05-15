@@ -1,5 +1,6 @@
 # Statically Strict Debugger
 
+Live Link: [https://vb-statically-strict-debugger.netlify.app/](https://vb-statically-strict-debugger.netlify.app/)
 ## 📌 Table of Contents
 
 - [🚀 Getting Started](#-getting-started)
@@ -50,6 +51,12 @@ Or
 Double click the `index.html` file to open the code in the browser of your choice.
 
 ## 📋 Approach
+
+1. I started off by converting all .js files into .ts
+2. Next, i setup my project to run typescript by installing typescript in the project and setting my tsconfig file
+3. I then resolved all the the type checking errors.
+4. Next, I resolved the bugs within the codebase.
+5. Finally, i wrote test to cover the happy paths within the application.
 
 ## 📸 Screenshots
 

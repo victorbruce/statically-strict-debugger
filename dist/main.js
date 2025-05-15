@@ -1,8 +1,3 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
 // elements declarations
 const homepageButton = document.querySelector(".entry_point");
 const homepage = document.querySelector("main");
@@ -11,11 +6,11 @@ const advanceFeaturesContainer = document.querySelector(".advanced_features_cont
 const nav = document.querySelector("nav");
 const loader = document.querySelector(".loader-container");
 // imports
-const basicSettings_1 = __importDefault(require("./basicSettings"));
-const advanceSettings_1 = __importDefault(require("./advanceSettings"));
+import Light from "./basicSettings.js";
+import AdvanceSettings from "./advanceSettings.js";
 // object creation
-const lightController = new basicSettings_1.default();
-const advancedSettings = new advanceSettings_1.default();
+const lightController = new Light();
+const advancedSettings = new AdvanceSettings();
 // global variables
 let selectedComponent;
 let isWifiActive = true;

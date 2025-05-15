@@ -1,6 +1,6 @@
-import General from "./general.js";
-import Light from "./basicSettings.js";
-import { Component } from "./general.js";
+import General from "./general";
+import Light from "./basicSettings";
+import { Component } from "./general";
 
 declare const Chart: any;
 class AdvanceSettings extends Light {
@@ -242,7 +242,11 @@ class AdvanceSettings extends Light {
     return this.#markup(component);
   }
 
-  setNewData<K extends keyof Component>(component: string, key: K, data: Component[K]) {
+  setNewData<K extends keyof Component>(
+    component: string,
+    key: K,
+    data: Component[K]
+  ) {
     const selectedComponent = this.componentsData[component.toLowerCase()];
     return (selectedComponent[key] = data);
   }

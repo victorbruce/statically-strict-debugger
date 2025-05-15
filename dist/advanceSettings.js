@@ -1,5 +1,10 @@
-import Light from "./basicSettings.js";
-class AdvanceSettings extends Light {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const basicSettings_1 = __importDefault(require("./basicSettings"));
+class AdvanceSettings extends basicSettings_1.default {
     constructor() {
         super();
     }
@@ -228,4 +233,4 @@ class AdvanceSettings extends Light {
         return await this.timer(formattedTime, true, component);
     }
 }
-export default AdvanceSettings;
+exports.default = AdvanceSettings;

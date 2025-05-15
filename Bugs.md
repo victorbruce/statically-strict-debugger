@@ -238,10 +238,29 @@ The root cause of this problem is that, the `isLightOn` property on the `compone
 if the intensity is greater than 0
 
 **Solution**
+
 ```ts
 // set isLightOn to true when intensity > 0
 componentData.isLightOn = true;
 
 // this ensures that the right value is passed to this.sliderLight
 this.sliderLight(componentData.isLightOn, lightSwitch as HTMLElement);
+```
+
+### time is accurately displayed in the advance settings
+
+**Problem**
+When a clock time is set, the time is not displayed
+
+**Cause**
+The value variable is always set to falsy due to the double bang(!!) hence code below to set the time is not run
+
+**Solution**`
+
+```ts
+// before
+if (!!value) return;
+
+// final change
+if (!value) return;
 ```

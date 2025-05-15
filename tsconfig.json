@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2022",
-    "module": "es6",
+    "target": "ES2022",
+    "module": "NodeNext",
     "strict": true,
     "esModuleInterop": true,
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules"]
